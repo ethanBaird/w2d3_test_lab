@@ -46,6 +46,7 @@ class Pub:
             self.remove_drink(drink)
             customer.reduce_cash(drink.price)
             customer.get_drink(drink)
+            customer.increase_drunkenness(drink)
         else:
             pass
 
@@ -54,6 +55,7 @@ class Pub:
         self.remove_food(food)
         customer.reduce_cash(food.price)
         customer.get_food(food)
+        customer.decrease_drunkenness(food)
 
 
 

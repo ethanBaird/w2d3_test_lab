@@ -12,7 +12,8 @@ class TestPub(unittest.TestCase):
         self.drink = Drink("Beer", 3.00, 5)
         self.customer = Customer("Pep", 10, 21)
         self.customer1 = Customer("Ethan", 20, 17)
-        self.food = Food("Burger", 9, 5)
+        self.customer2 = Customer("Jon", 100, 21)
+        self.food = Food("Burger", 9.00, 5)
 
     def test_pub_has_name(self):
         self.assertEqual("The Prancing Pony", self.pub.name)
@@ -129,6 +130,32 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1, self.customer.wallet)
         self.assertEqual(0, self.pub.check_food_stock())
         self.assertEqual(1, self.customer.num_of_food())
+
+    def test_customer_drunkenness_increses_when_purchasing(self):
+        self.pub.add_drink(self.drink)
+
+        self.pub.sell_drink(self.customer, self.drink)
+
+        self.assertEqual(5, self.customer.drunkenness)
+        self.assertEqual(False, self.pub.check_if_drunk(self.customer))
+        self.assertEqual(True, self.pub.check_age(self.customer))
+        self.assertEqual(103.00, self.pub.till)
+        self.assertEqual(7.00, self.customer.wallet)
+        self.assertEqual(0,self.pub.check_stock())
+        self.assertEqual(1, self.customer.num_of_drinks())
+
+    def test_customer_drunkenness_decreases_when_buying_food(self):
+        self.pub.add_drink(self.drink)
+        self.pub.add_food(self.food)
+
+        self.pub.sell_drink(self.customer2, self.drink)
+        self.pub.sell_food(self.customer2, self.food)
+
+        self.assertEqual(0, self.customer2.drunkenness)
+        self.assertEqual(112.00, self.pub.till)
+        self.assertEqual(88.00, self.customer2.wallet)
+        self.assertEqual(0, self.pub.check_food_stock())
+        self.assertEqual(1, self.customer2.num_of_food())
 
 
 
