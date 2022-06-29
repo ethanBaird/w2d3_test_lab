@@ -15,4 +15,8 @@ class TestCustomer(unittest.TestCase):
     def test_customer_has_age(self):
         self.assertEqual(27, self.customer.age)
 
+    def test_customer_can_reduce_cash(self):
+        self.customer.reduce_cash(10)
+        self.assertEqual(10, self.customer.wallet)
+
     
