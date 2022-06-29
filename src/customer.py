@@ -10,7 +10,6 @@ class Customer:
     def reduce_cash(self, amount):
         self.wallet -= amount
 
-
     def get_drink(self, drink):
         self.drinks.append(drink)
 
