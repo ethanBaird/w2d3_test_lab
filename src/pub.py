@@ -24,8 +24,14 @@ class Pub:
         else: 
             return False
 
+    def check_if_drunk(self, customer):
+        if customer.drunkenness >= 12:
+            return True
+        else:
+            return False
+
     def sell_drink(self, customer, drink):
-        if self.check_age(customer) == True:
+        if self.check_age(customer) == True and self.check_if_drunk(customer) == False:
             self.increase_till(drink.price)
             self.remove_drink(drink)
             customer.reduce_cash(drink.price)

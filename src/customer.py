@@ -16,3 +16,9 @@ class Customer:
 
     def num_of_drinks(self):
         return len(self.drinks)
+
+    def increase_drunkenness(self, drink):
+        self.drunkenness += drink.alcohol_units
+    
+    
+    
