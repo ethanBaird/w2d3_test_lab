@@ -5,15 +5,25 @@ class Pub:
         self.name = _name
         self.till = _till
         self.drinks = []
+        self.food = []
 
     def check_stock(self):
         return len(self.drinks)
 
+    def check_food_stock(self):
+        return len(self.food)
+
     def add_drink(self, drink):
         self.drinks.append(drink)
 
+    def add_food(self, food):
+        self.food.append(food)
+
     def remove_drink(self, drink):
         self.drinks.remove(drink)
+
+    def remove_food(self, food):
+        self.food.remove(food)
 
     def increase_till(self, amount):
         self.till += amount
@@ -38,6 +48,14 @@ class Pub:
             customer.get_drink(drink)
         else:
             pass
+
+    def sell_food(self, customer, food):
+        self.increase_till(food.price)
+        self.remove_food(food)
+        customer.reduce_cash(food.price)
+        customer.get_food(food)
+
+
 
 
    
