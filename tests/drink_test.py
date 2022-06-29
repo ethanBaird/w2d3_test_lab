@@ -6,7 +6,7 @@ from src.drink import Drink
 class TestDrink(unittest.TestCase):
 
     def setUp(self):
-        self.drink = Drink("Tennents", 3.50, 4.0)
+        self.drink = Drink("Tennents", 3.50, 4.0, 100)
     
     def test_drink_has_name(self):
         self.assertEqual("Tennents", self.drink.name)
@@ -17,5 +17,8 @@ class TestDrink(unittest.TestCase):
     def test_drink_has_alcohol(self):
         self.assertEqual(4.0, self.drink.alcohol_units)
 
+    def test_drink_can_reduce_stock(self):
+        self.drink.reduce_stock()
+        self.assertEqual(99, self.drink.stock)
     
             

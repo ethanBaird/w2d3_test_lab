@@ -15,6 +15,7 @@ class Pub:
 
     def add_drink(self, drink):
         self.drinks.append(drink)
+        # drink.reduce_stock()
 
     def add_food(self, food):
         self.food.append(food)
@@ -47,6 +48,7 @@ class Pub:
             customer.reduce_cash(drink.price)
             customer.get_drink(drink)
             customer.increase_drunkenness(drink)
+            drink.reduce_stock()
         else:
             pass
 

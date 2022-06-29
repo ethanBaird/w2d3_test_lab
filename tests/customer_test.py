@@ -7,7 +7,7 @@ from src.food import Food
 class TestCustomer(unittest.TestCase):
     def setUp(self):
         self.customer = Customer("Ethan", 20, 27)
-        self.drink = Drink("Absynth", 8, 5)
+        self.drink = Drink("Absynth", 8, 5, 14)
         self.food = Food("Burger", 9, 5)
 
     def test_customer_has_name(self):
