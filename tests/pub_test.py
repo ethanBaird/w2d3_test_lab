@@ -9,6 +9,5 @@ class TestPub(unittest.TestCase):
         self.pub1 = Pub("Bannermans", 200.00)
 
     def test_pub_has_name(self):
-        self.assertEquals("The Prancing Pony", self.pub.name)
+        self.assertEqual("The Prancing Pony", self.pub.name)
 
-        
