@@ -1,6 +1,7 @@
 import unittest
 
 from src.pub import Pub
+from src.drink import Drink
 
 class TestPub(unittest.TestCase):
     
@@ -12,18 +13,22 @@ class TestPub(unittest.TestCase):
     def test_pub_has_name(self):
         self.assertEqual("The Prancing Pony", self.pub.name)
 
+    # @unittest.skip("delete this line to run the test")
     def test_pub_has_till(self):
         self.assertEqual(100.00, self.pub.till)
 
-    def test_pub_has_no_drinks(self):
-        self.assertEqual(0, len(self.pub.drinks))
+    # @unittest.skip("delete this line to run the test")
+    def test_pub_has_drinks(self):
+        self.assertEqual(0, self.pub.check_stock())
 
+    # @unittest.skip("delete this line to run the test")
     def test_pub_can_add_drinks(self):
-        add_drink(self.drink)
-        self.assertEqual (1, len(self.pub.drinks))
+        self.pub.add_drink(self.drink)
+        self.assertEqual (1, self.pub.check_stock())
 
+    # @unittest.skip("delete this line to run the test")
     def test_pub_can_remove_drinks(self):
-        add_drink(self.drink)
-        remove_drink(self.drink)
-        self.assertEqual(0, self.pub.drinks)
+        self.pub.add_drink(self.drink)
+        self.pub.remove_drink(self.drink)
+        self.assertEqual(0, self.pub.check_stock())
 
