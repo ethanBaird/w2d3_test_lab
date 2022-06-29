@@ -4,60 +4,25 @@ class Pub:
     def __init__(self, _name, _till):
         self.name = _name
         self.till = _till
-        self.drinks = []
-        self.food = []
 
-    def check_stock(self):
-        return len(self.drinks)
+    def increase_till(self, item):
+        self.till += item.price
 
-    def check_food_stock(self):
-        return len(self.food)
-
-    def add_drink(self, drink):
-        self.drinks.append(drink)
-        # drink.reduce_stock()
-
-    def add_food(self, food):
-        self.food.append(food)
-
-    def remove_drink(self, drink):
-        self.drinks.remove(drink)
-
-    def remove_food(self, food):
-        self.food.remove(food)
-
-    def increase_till(self, amount):
-        self.till += amount
-
-    def check_age(self, customer):
-        if customer.age >= 18:
-            return True
-        else: 
-            return False
-
-    def check_if_drunk(self, customer):
-        if customer.drunkenness >= 12:
-            return True
-        else:
-            return False
-
+    def can_buy(self, customer):
+        return customer.age >= 18 and customer.drunkenness < 12
+           
     def sell_drink(self, customer, drink):
-        if self.check_age(customer) == True and self.check_if_drunk(customer) == False:
-            self.increase_till(drink.price)
-            self.remove_drink(drink)
-            customer.reduce_cash(drink.price)
-            customer.get_drink(drink)
-            customer.increase_drunkenness(drink)
-            drink.reduce_stock()
+        if drink.in_stock() == True and self.can_buy(customer) == True:
+                customer.buy_drink(drink)
+                self.increase_till(drink)
+                drink.reduce_stock()
         else:
             pass
 
     def sell_food(self, customer, food):
-        self.increase_till(food.price)
-        self.remove_food(food)
-        customer.reduce_cash(food.price)
-        customer.get_food(food)
-        customer.decrease_drunkenness(food)
+        self.increase_till(food)
+        customer.buy_food(food)
+        food.reduce_stock()
 
 
 
