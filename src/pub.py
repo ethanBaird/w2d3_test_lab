@@ -14,3 +14,12 @@ class Pub:
 
     def remove_drink(self, drink):
         self.drinks.remove(drink)
+
+    def increase_till(self, amount):
+        self.till += amount
+
+    def check_age(self, customer):
+        if customer.age >= 18:
+            return True
+        else: 
+            return False
