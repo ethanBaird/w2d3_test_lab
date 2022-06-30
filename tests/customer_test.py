@@ -40,17 +40,3 @@ class TestCustomer(unittest.TestCase):
 
         self.assertEqual(3, self.customer.wallet)
         self.assertEqual(0, self.customer.drunkenness)
-    
-
-    # def test_customer_can_reduce_cash(self):
-    #     self.customer.reduce_cash(10)
-    #     self.assertEqual(10, self.customer.wallet)
-
-    # def test_customer_can_increase_drunkenness(self):
-    #     self.customer.increase_drunkenness(self.drink)
-    #     self.assertEqual(5, self.customer.drunkenness)
-
-    # def test_customer_can_decrease_drunkenness(self):
-    #     self.customer.increase_drunkenness(self.drink)
-    #     self.customer.decrease_drunkenness(self.food)
-    #     self.assertEqual(0, self.customer.drunkenness)

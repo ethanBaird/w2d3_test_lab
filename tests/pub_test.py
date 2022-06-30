@@ -42,6 +42,19 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1, self.customer.wallet)
         self.assertEqual(15, self.food.stock)
 
+    def test_pub_can_refuse_service__customer_under_age(self):
+        self.under_age_customer = Customer("Sam", 30, 17)
+
+        self.assertEqual(False, self.pub.can_buy(self.under_age_customer))
+        self.assertEqual(None, self.pub.sell_drink(self.under_age_customer, self.drink))
+
+    def test_pub_can_refuse_service__customer_drunk(self):
+        self.drunk_customer = Customer("Harvey", 30, 21)
+        self.drunk_customer.drunkenness = 30
+
+        self.assertEqual(False, self.pub.can_buy(self.drunk_customer))
+        self.assertEqual(None, self.pub.sell_drink(self.drunk_customer, self.drink))
+
 
 
 

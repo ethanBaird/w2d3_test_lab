@@ -14,4 +14,5 @@ class Food:
     def reduce_stock(self):
         self.stock -= 1
 
+
     
